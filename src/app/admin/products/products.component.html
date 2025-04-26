@@ -1,0 +1,49 @@
+<div class="blog-title">
+  <h2>Contact Me.</h2>
+</div>
+
+<div class="blog-grid">
+  <div class="contactform" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="formtitle">
+      <h2>LET'S TALK</h2>
+    </div>
+
+    <div>
+      <input type="text" formControlName="name" placeholder="Name" />
+      <div *ngIf="submitted && contactForm.controls['name'].errors?.['required']" class="error">
+        Name is required
+      </div>
+    </div>
+    
+    <div>
+      <input type="email" formControlName="email" placeholder="Email" />
+      <div *ngIf="submitted && contactForm.controls['email'].errors?.['required']" class="error">
+        Email is required
+      </div>
+      <div *ngIf="submitted && contactForm.controls['email'].errors?.['email']" class="error">
+        Enter a valid email
+      </div>
+    </div>
+    
+    <div>
+      <textarea formControlName="message" placeholder="Type your message..."></textarea>
+      <div *ngIf="submitted && contactForm.controls['message'].errors?.['required']" class="error">
+        Message is required
+      </div>
+    </div>
+    
+    <button type="submit" [disabled]="contactForm.invalid">SEND MESSAGE</button>
+
+
+    
+  </div>
+
+ <!-- ✅ Popup HTML -->
+<div *ngIf="showPopup" class="popup-overlay">
+  <div class="popup">
+    <h3>Thank you!</h3>
+    <p>Your message has been sent successfully.</p>
+    <button (click)="closePopup()">Close</button>
+  </div>
+</div>
+</div>

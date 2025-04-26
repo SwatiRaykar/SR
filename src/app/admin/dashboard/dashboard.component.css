@@ -1,0 +1,111 @@
+#title {
+  background-color: rgb(11, 4, 31);
+  color: rgb(90, 183, 233);
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+#title h2 {
+  font-size: 1.2rem;
+  font-family: "Playfair Display", serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+#title h2 img {
+  height: 2.5vh;
+  object-fit: contain;
+}
+
+.main {
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+  flex-direction: column;
+}
+
+.typewriter-container {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: -5vh;
+  margin-left: -17vw;
+  text-align: center;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.static-text,
+.dynamic-text {
+  color: #04b0f5;
+}
+
+.dynamic-text {
+  font-weight: 700;
+  text-decoration: underline;
+  white-space: nowrap;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 2rem;
+}
+
+.cursor {
+  font-weight: 300;
+  color: #007bff;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* === Responsive Adjustments === */
+
+@media screen and (max-width: 768px) {
+  #title h2 {
+    font-size: 1rem;
+  }
+
+  .typewriter-container {
+    font-size: 1.5rem;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .main {
+    height: auto;
+    padding: 2rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .typewriter-container {
+    font-size: 1.2rem;
+    flex-direction: column;
+  }
+
+  #title h2 {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .dynamic-text {
+    margin-left: 0;
+  }
+}

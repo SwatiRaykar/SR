@@ -1,0 +1,136 @@
+
+.admin-layout {
+    display: flex;
+    /* height: 100%; */
+    width: 100%;
+    z-index: 2;
+    flex-direction: row;
+    height: 100vh;
+    position: relative;
+}
+.sidebar {
+    background-color:rgb(11, 4, 31);
+    color: white;
+    width: 200px;
+    /* height: 110vh; */
+    padding: 5px;
+    margin-top:0vh;
+    z-index: 6;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+}
+/* Sidebar Hidden on Mobile */
+.sidebar.hidden {
+  transform: translateX(-100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* Navigation Items */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+   
+}
+.sidebar ul li {
+ display: flex;
+opacity: 0.7;
+align-items: center;
+padding: 10px 5px;
+}
+.sidebar ul li:hover {
+  opacity: 1;
+}
+.sidebar .logo img{
+  /* position: absolute; */
+  margin-left: -5px;
+  margin-top: 10px;
+  height: 170px;
+  z-index: 12;
+}
+.sidebar ul li h6{
+  margin-left: 10px;
+    font-size: 12px;
+}
+
+/* .sidebar ul li a img{
+margin-left: 0px;
+width:100%;
+margin-top: 20px;
+} */
+.sidebar ul li a img {
+    height: 20px;
+    width: 20px;
+}
+.sidebar ul>:first-child{
+  opacity: 1;
+}
+.sidebar ul li img.active-link   {
+  background-color: green; /* Active button background color */
+}
+.sidebar #homeicon img , #usericon img,#resumeicon img, #contacticon img, #experienceicon img, #blogicon img{
+  height: 20px;
+  width:20px;
+
+}
+
+
+/* ----------------[ admin-content ]--------------------*/
+.admin-content {
+    height: 100%;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 200px;
+    position: absolute;
+    background-color: rgb(0, 11, 11);
+    z-index: 1;
+
+    flex: 1;
+    /* padding: 10px; */
+    overflow-y: auto;
+}
+.hamburger {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  cursor: pointer;
+}
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: rgb(5, 213, 245);
+  margin: 4px;
+  transition: 0.4s;
+}
+
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-layout {
+      flex-direction: column;
+  }
+  .sidebar {
+      width: 200px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+  }
+  .admin-content {
+      margin-left: 0;
+      padding-top: 50px;
+  }
+  .hamburger {
+      display: block;
+  }
+  .sidebar ul li h6 {
+      font-size: 10px;
+  }
+  .sidebar .logo img {
+      height: 90px;
+  }
+}

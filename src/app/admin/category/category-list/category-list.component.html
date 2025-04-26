@@ -1,0 +1,38 @@
+<div class="maindiv">
+    <div id="title">
+        <h2>Category List</h2>
+        <button (click)="navigateToCategory()">+ Add Category</button>
+      </div>
+      <hr>
+      <div class="search"><h3>Search:<input type="text" placeholder="search.."></h3></div>
+    <table>
+            <thead>
+              <tr>
+                <th>Sl</th>
+                <th>Category Name</th>
+                <th>Status</th>
+                <th >Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of categories">
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.status}}</td>
+                <td><span><img src="https://img1.pnghut.com/13/7/7/hb1WGviSDx/logo-scalable-vector-graphics-brand-pen-editing.jpg" alt=""></span>
+                    /<span><img src="https://image.pngaaa.com/450/1462450-middle.png" alt=""
+                      (click)="deleteCategory(item.id)"></span></td>
+              </tr>
+              <hr>
+            </tbody>
+    </table>
+    <div class="Listinfo">
+       <p>Showing <span>1</span> to <span>6</span> of <span>6</span> entries</p>
+       <div>
+        <button>Previous</button>
+        <button class="btn2">1</button>
+        <button>Next</button>
+       </div>
+    </div>
+     
+    </div>

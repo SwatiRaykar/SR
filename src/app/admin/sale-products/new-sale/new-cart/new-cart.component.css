@@ -1,0 +1,143 @@
+
+.products-container {
+  /* background-color: aqua; */
+    height: 450px;
+    width: 450px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 4px;
+    display: grid;
+    overflow-x: hidden;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+.products-container::-webkit-scrollbar {
+    display: none;    
+  }
+  
+  .product {
+    position: relative;
+    height: 205px;
+    border: 1px solid #fbfcfb;
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px rgb(190, 192, 192);
+  }
+  .product:hover{
+    background-color: rgb(253, 254, 255);
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: all 1s ease;
+    box-shadow: 1px 1px 10px rgb(122, 125, 125);
+
+}
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 185px;
+  }
+  
+  .product-image {
+    /* flex: 1; */
+    height: 90px;
+    /* background-color: #b1f3e4; */
+  }
+  
+  .product-image img {
+    max-width:100% ;
+    height: 80%;
+    /* margin-left: -100px; */
+    
+  }
+  .product .remove{
+    height: 20px;
+    width: 15px;
+    margin-top: -10px;
+    margin-left: 100px;
+    cursor: pointer;
+    padding: 0px;
+    background-color: rgb(239, 237, 237);
+    color: red;
+  }  
+  .product .remove span{
+   font-size: 15px;
+   margin-left: 0px;
+  }
+  
+  .product-details {
+    height: 90px;
+    padding: 10px;
+    text-align: left;
+    /* background-color: antiquewhite; */
+  }
+  .product-details p {
+    font-size: 14px;
+  }
+  .quantity{
+    margin-top: -6px;
+  }
+  .quantity span{
+font-size: 15px; 
+padding: 1px;
+ }
+  .price, .quantity, .total-price {
+    margin-bottom: 5px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  .name-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .name-container p {
+    display: inline;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    /* overflow: visible; */
+  }
+  
+  .name-container p::after {
+    content: attr(data-title);
+    position: absolute;
+    opacity: 0.9;
+    background-color: #0e0d0d;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 1;
+    top: 100%;
+    left: -5%;
+    /* transform: translateX(-50%); */
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    /* overflow: visible; */
+  }
+  
+  .name-container p:hover::after {
+    opacity:0.9;
+    overflow: visible;
+  }
+
+/* Tick Cheked */
+.product.selected {
+  border: 2px solid green; /* Change the border color if needed */
+  position: relative;
+}
+
+.product.selected::after {
+  content: '✔'; /* Tick mark */
+  color: green; /* Set the tick color to green */
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

@@ -1,0 +1,105 @@
+<!-- <div class="Resume"> -->
+<div class="blog-title" >
+    <h2 >My Resume.</h2>
+    
+</div>
+    <div class="blog-grid">
+
+
+
+
+
+  <div class="container" (scroll)="onScroll($event)">
+    <div class="profile-container">
+      <img [src]="profileImagePath" alt="Profile Picture" class="profile-picture" />
+      <div class="details-container">
+        <div class="detail-item">
+          <i class="fas fa-user icon"></i>
+          <span>Swati Raykar</span>
+        </div>
+        <div class="detail-item">
+          <i class="fas fa-envelope icon"></i>
+          <span>swatiraykar448&#64;gmail.com</span>
+        </div>
+        <div class="detail-item">
+          <i class="fab fa-linkedin icon"></i>
+          <span><a href="https://linkedin.com/in/swati-raykar-8b00121bb">linkedin.com/in/swati-raykar-8b00121bb</a></span>
+        </div>
+        <div class="detail-item">
+          <i class="fas fa-graduation-cap icon"></i>
+          <span>Master’s in Computer Science</span>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  <div class="section" *ngIf="experience.length">
+    <h2>EXPERIENCE</h2>
+    <div class="timeline">
+      <div class="entry" *ngFor="let job of experience">
+        <div class="year">{{ job.year }}</div>
+        <div class="details">
+          <h3>{{ job.title }}</h3>
+          <h4>{{ job.company }}</h4>
+          <p [innerHTML]="job.description">{{ job.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" *ngIf="education.length">
+    <h2>EDUCATION</h2>
+    <div class="timeline">
+      <div class="entry" *ngFor="let edu of education">
+        <div class="year">{{ edu.year }}</div>
+        <div class="details">
+          <h3>{{ edu.course }}</h3>
+          <h4>{{ edu.institution }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" *ngIf="skills.length">
+    <h2>TECHNICAL SKILLS</h2>
+    <div class="skills">
+      <div *ngFor="let skill of skills" class="skill">
+        <label>{{ skill.name }}</label>
+        <div class="bar">
+          <div class="fill" [ngStyle]="{ width: skill.level + '%' }">
+            {{ skill.level }}%
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="resume-download-container">
+    <button class="download-btn" (click)="downloadResume()">📄 Download Resume</button>
+    </div>
+  
+</div>
+  
+        <!-- <div class="resume">
+            <div class="experience">
+                <h2>EXPERIENCE</h2>
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+
+            </div>
+
+
+            <div class="education">
+                <h2>EDUCATION</h2>
+            </div> -->
+        <!-- </div> --> <!--resume end-->
+
+ </div>
+
+        
+    

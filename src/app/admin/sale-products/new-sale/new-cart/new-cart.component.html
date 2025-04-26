@@ -1,0 +1,37 @@
+
+<div class="products-container">
+  <div *ngIf="cartItems.length === 0">
+    <p id="emptycart">
+      Your Amazon cart is empty. <br />
+      or Check server connection
+    </p>
+  </div>
+  <!-- <div *ngIf="cartItems.length > 0"  > -->
+  <div *ngFor="let item of cartItems" class="product"
+  [class.selected]="selectedItems.has(item.id)"
+     (click)="toggleSelection(item)">
+    
+    <div class="product-info">
+      <div class="remove">
+        <span class="material-symbols-outlined" (click)="removeProduct(item.id)">close</span>
+      </div>
+      <div class="product-image">
+        <img [src]="item.imageURL" alt="{{ item.name }}" />
+      </div>
+      <div class="product-details">
+        <div class="name-container">
+          <p  [attr.data-title]="item.name">{{ getTruncatedName(item.name) }}</p>
+        </div>
+        <p class="price">Price: <b>{{ item.price }}</b></p>
+        <p class="quantity">Quantity:<span class="material-symbols-outlined" (click)="decreaseQuantity(item.id, 1)">remove</span><b>{{ item.quantity }}</b>
+        <span class="material-symbols-outlined" (click)="increaseQuantity(item.id, 1)">add</span></p>
+       
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+

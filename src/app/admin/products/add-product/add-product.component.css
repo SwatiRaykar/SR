@@ -1,0 +1,104 @@
+/* **************SignUp********************* */
+/* signUp style */
+
+.maindiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  margin-top: 0px;
+  margin-left: -300px;
+  
+  }
+  .amazonlogo img{
+    height: 150px;
+    margin-left: -200px;
+  }
+  .amazonlogo {
+    display: flex;
+  }
+  #dotin{
+    color: rgb(40, 139, 25);
+    font-size: 26px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-top: 52px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: -60px;
+    z-index: 5;
+    }
+   .subdiv{
+    border: black 1px solid;
+    height: 420px;
+    width: 400px;
+    display: flex;
+    margin-top: -40px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 15px;
+   }
+  i{
+    font-size: 13px;
+  }   
+  p{
+    font-size: 14px;
+    margin-top: 7px;
+  }
+   small{
+      margin-left: 0px;
+    }
+    a{
+      text-decoration: none;
+      color: rgb(5, 107, 241);
+    }
+  .bttn{
+     display: block;
+      width: 240px;
+      height: 40px;
+      margin:20px auto;
+      font-size: 15px;
+      background-color:rgb(1, 147, 42) ;;
+      font-family:Arial, Helvetica, sans-serif;
+      border:rgb(2, 166, 2) ridge 1px;
+      border-radius: 20px;
+      color: rgb(251, 248, 248);
+  }
+  .form-group {
+      position: relative;
+      font-size:20px;
+      -webkit-text-stroke:0.5px rgb(13, 14, 14) ;
+  }
+  .form-group input{
+      /* position: relative; */
+      width: 350px;
+      margin: 8px auto;
+      /* text-align: center; */
+      cursor:text;
+      font-size: 15px;
+      padding: 5px;
+      padding-left: 33px;
+      border: #000 1px ridge;
+      color: rgb(1, 1, 1);
+      border-radius: 8px;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      background-color: #fdf8f8;
+  }
+  input[type='email'],input[type='password']{
+      border: none;
+      outline: none;
+      box-shadow: none;
+      width: 100%;
+    }
+     .bottomdiv {
+      margin-top: 70px;
+    }
+  .bottomdiv a{
+    padding: 10px;
+    font-size: 12px; 
+  }
+  .bottomdiv p{
+    padding: 10px;
+    font-size: 12px;
+  }
+  

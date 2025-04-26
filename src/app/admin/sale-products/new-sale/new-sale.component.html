@@ -1,0 +1,166 @@
+<div class="main-div">
+  
+  <div class="menubar" >
+<div  *ngFor="let item of categories" >
+    <button class="btn" (click)="loadCartItemsForCategory(item.name)">{{ item.name }}</button>
+</div>
+</div>
+
+<div class="SecondDiv">
+
+<div class="searchBars">
+
+<input type="text"  placeholder="Search...">
+
+<select  [(ngModel)]="selectedOption" placeholder="Select medicine" >
+  <option value="" disabled selected>Select an option</option>  
+    <option  *ngFor="let option of options" [value]="option.value">
+    {{ option.label }}
+      </option>
+</select>
+      
+
+<div>
+<input type="text" placeholder="Barcode or QR-code scan here">
+<h4>OR</h4>
+<input type="text" placeholder="Manual input barcode">
+</div>
+<input type="text" placeholder="Walking Customer">
+</div> <!-- search bar end -->
+
+<div>
+  <div class="cart-content">
+    <!-- <router-outlet></router-outlet> -->
+     
+<div class="products-container">
+  <div *ngIf="cartItems.length === 0">
+    <p id="emptycart">
+  No products available for this category.</p>
+  </div>
+  <!-- <div *ngIf="cartItems.length > 0"  > -->
+  <div *ngFor="let item of cartItems" class="product">
+      <div class="remove">
+        <span title="Remove from cart" class="material-symbols-outlined" (click)="removeProduct(item.id)">close</span>
+      </div>
+      <div class="product-image" [class.selected]="selectedItems.has(item.id)"
+      (click)="toggleSelection(item)">
+        <img [src]="item.imageURL" alt="{{ item.name }}" />
+      </div>
+      <div class="product-details">
+        <div class="name-container">
+          <p  [attr.data-title]="item.name">{{ getTruncatedName(item.name) }}</p>
+        </div>
+        <p class="price">Price: <b>{{ item.price }}</b></p>
+        <p class="quantity">Quantity:<span class="material-symbols-outlined" (click)="decreaseQuantity(item.id, 1)">remove</span>
+          <b>{{ item.quantity }}</b>
+        <span class="material-symbols-outlined" (click)="increaseQuantity(item.id, 1)">add</span></p>
+       
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+  </div>
+</div>  <!-- second div end -->
+
+
+<div class="billing">
+  <div class="medicines-container" >
+    <table >
+      <thead>
+        <tr  >
+          <th><button>Medicine Information</button></th>
+          <th ><button>Quantity</button></th>
+          <th ><button>Price</button></th>
+          <th><button>Total</button></th>
+          <th><button>Action</button></th>
+        </tr>
+      </thead>
+      <tbody  *ngIf="selectedItemsArray.length > 0" >
+        <tr  *ngFor="let item of selectedItemsArray">
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.totalbill}}</td>
+          <td><button (click)="removeProduct(item.id)">Remove</button></td>
+        </tr>
+        <hr>
+      </tbody>
+</table>
+
+  </div>
+    <!-- import reactive form module -->
+    <form action="#" method="post" [formGroup]="billingForm"> 
+
+       <div>
+        <div class="form-group" [class.error]="billingForm.controls['InvoiceDiscount'].dirty && billingForm.hasError('required','InvoiceDiscount')" >
+          <label for="invoiceDiscount">Invoice Discount:</label>
+          <select (change)="onDiscountChange($event)" [(ngModel)]="selectedOption" placeholder="Discount" >
+            <option value="" disabled selected>Invoice Discount:</option>  
+            <option  *ngFor="let option1 of options1" [value]="option1.value"  formControlName="InvoiceDiscount">
+              {{ option1.label }}
+            </option>
+          </select>
+      </div>
+       
+        <div class="form-group" [class.error]="billingForm.controls['TotalDiscount'].dirty && billingForm.hasError('required','TotalDiscount')" >
+            <label for="totalDiscount">Total Discount:</label>
+            <input formControlName="TotalDiscount" type="text" name="Total Discount" id="totalDiscount" placeholder="0.00" readonly />
+          </div>
+          <small *ngIf="billingForm.controls['TotalDiscount'].dirty && billingForm.hasError('required','TotalDiscount')" style="color: red;">*Total Discount is required</small>
+
+          
+          <div class="form-group" [class.error]="billingForm.controls['TotalVAT'].dirty && billingForm.hasError('required','TotalVAT')" >
+            <label for="totalVAT">Total VAT:</label>
+            <input formControlName="TotalVAT" type="text" name="Total VAT" id="totalVAT" placeholder="0.00"/>
+          </div>
+          <small *ngIf="billingForm.controls['TotalVAT'].dirty && billingForm.hasError('required','TotalVAT')" style="color: red;">*Total VAT is required</small>
+        </div>
+
+          <div>
+          <div class="form-group" >
+            <label for="grandTotal">Grand Total:</label>
+            <input readonly formControlName="GrandTotal" type="text" name="Grand Total" id="grandTotal" value="{{totalBill}}" placeholder="0.00"/>
+          </div>
+          <small *ngIf="billingForm.controls['GrandTotal'].dirty && billingForm.hasError('required','GrandTotal')" style="color: red;">*Grand Total is required</small>
+
+
+          
+          <div class="form-group" [class.error]="billingForm.controls['Previous'].dirty && billingForm.hasError('required','Previous')" >
+            <label for="previous">Previous:</label>
+            <input formControlName="Previous" type="text" name="Previous" id="previous" placeholder="0.00"/>
+          </div>
+          <small *ngIf="billingForm.controls['Previous'].dirty && billingForm.hasError('required','Previous')" style="color: red;">*Previous is required</small>
+          
+
+          
+          <div class="form-group" [class.error]="billingForm.controls['Change'].dirty && billingForm.hasError('required','Change')" >
+            <label for="change">Change:</label>
+            <input formControlName="Change" type="text" name="Change"  id="change" placeholder="0.00"/>
+          </div>
+          <small *ngIf="billingForm.controls['Change'].dirty && billingForm.hasError('required','Change')" style="color: red;">*Change is required</small>
+        </div>
+        </form>
+
+        <div class="totalbill">
+            <div class="fdiv">
+                <h4>Net Total:{{discountedTotalBill}}</h4>
+                <h4>Paid Amount<input type="text" name="" id=""></h4>
+                <h4>Due Amount:0.00</h4>
+            </div>
+            <div class="sdiv">
+                <button class="btn1">Full Paid</button>
+                <button class="btn2">Cash Payment</button>
+                <button class="btn3">Bank Payment</button>
+            </div>
+        </div>
+</div>
+</div> <!-- maindiv end -->
+
+ 
+

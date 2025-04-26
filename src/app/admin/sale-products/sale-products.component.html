@@ -1,0 +1,58 @@
+<div class="main-div">
+  <div class="blog-title">
+    <h2>My Blogs.</h2>
+  </div>
+
+  <div class="blog-grid">
+    <div class="blog-card" *ngFor="let blog of blogs" (click)="openBlog(blog)">
+      <img [src]="blog.image" alt="Blog image" class="blog-image">
+      <div class="blog-content">
+        <p class="category">{{ blog.category }}</p>
+        <h2 class="blog-heading">{{ blog.title }}</h2>
+        <p class="blog-date">{{ blog.date }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal (Blog Detail View) -->
+  <!-- Modal (Blog Detail View) -->
+  <div class="modal-overlay" *ngIf="selectedBlog" (click)="closeBlog()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-main">
+      <div class="modal-submain">
+      <img [src]="selectedBlog.image" alt="Blog header" class="modal-image" />
+    </div>
+  <div class="modal-submain modal-submain1">
+      <p class="category">{{ selectedBlog.category }}</p>
+      <h2 class="modal-heading">Welcome to my blog</h2>
+      <p class="blog-date">{{ selectedBlog.date }}</p>
+      <h4 class="modal-title">{{ selectedBlog.title }}</h4>
+
+      <p class="blog-description" [innerHTML]="selectedBlog.description">
+        {{ selectedBlog.description }}
+      </p>
+    </div>
+  </div>
+      <!-- Scrollable content area -->
+      <div class="scrollable-content" [innerHTML]="selectedBlog.content">
+        {{ selectedBlog.content }}
+      </div>
+  
+      
+    </div>
+    <button class="close-btn" (click)="closeBlog()">Close</button>
+  </div>
+  
+
+</div>
+
+           
+        
+            
+
+
+<!-- <div class="sale-content">
+    <router-outlet></router-outlet>
+  </div> -->
+
+<!-- </div> -->

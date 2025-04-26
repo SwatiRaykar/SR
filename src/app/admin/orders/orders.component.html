@@ -1,0 +1,61 @@
+
+<!-- <div class="Projects"> -->
+
+    <div class="blog-title" >
+        <h2 >My Projects.</h2>
+        </div>
+        <div class="blog-grid">
+            <div class="category-tabs">
+                <button 
+                  *ngFor="let cat of ['All', 'Augmented Reality', 'Virtual Reality', 'Games', 'Web Design & Development']"
+                  (click)="selectCategory(cat)"
+                  [class.active]="selectedCategory === cat">
+                  {{ cat }}
+                </button>
+              </div>
+              <div class="gallery-container">
+                <div class="gallery-card" *ngFor="let item of filteredItems" (click)="openPopup(item)">
+                  <img [src]="item.video ? item.thumbnail : item.images?.[0]"  class="card-img" />
+                  <div class="overlay">
+                    <h2>{{ item.title }}</h2>
+                    <p>{{ item.text }}</p>
+                  </div>
+                </div>
+          </div>
+              <!-- Popup -->
+              <!-- Popup Modal -->
+<div class="popup" *ngIf="selectedItem">
+    <button class="popup-close" (click)="closePopup()">×</button>
+    <div class="popup-content">
+      <!-- <button class="popup-close" (click)="closePopup()">×</button> -->
+  
+      <!-- Project Info -->
+      <h2 class="popup-title">{{ selectedItem.title }}</h2>
+      <p class="popup-description" [innerHTML]="selectedItem.description">
+        {{ selectedItem.description || 'Adipisicing tempore architecto quae est similique...' }}
+      </p>
+  
+      <div class="popup-meta">
+        <!-- <span><strong>Client:</strong> {{ selectedItem.client || 'Themeforest' }}</span> -->
+        <span><strong>Website:</strong> <a href="{{ selectedItem.website }}" target="_blank">{{ selectedItem.website }}</a></span>
+        <span><strong>Category:</strong> {{ selectedItem.category }}</span>
+      </div>
+  
+      <!-- If Video -->
+      <div class="popup-media" *ngIf="selectedItem.video">
+        <iframe width="100%" height="450"
+                [src]="selectedItem.video | safeUrl"
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+  
+      <!-- If Images -->
+      <div class="popup-images" *ngIf="!selectedItem.video && selectedItem.images?.length">
+        <img *ngFor="let img of selectedItem.images" [src]="img" alt="Project Image" />
+      </div>
+    </div>
+  </div>
+  </div>
+    <!-- </div>    -->
+        
+
+  
