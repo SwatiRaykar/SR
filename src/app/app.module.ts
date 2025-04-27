@@ -28,7 +28,7 @@ import { authGuard } from './auth/auth.guard';
 import { AuthService } from './APIServices/auth.service';
 
 const appRoute:Routes=[  
-  { path: '', redirectTo: '/admin/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/portfolio/home', pathMatch: 'full' },
 {path:'',component:AdminComponent},
 //  {path:'',redirectTo:'dashboard',pathMatch:'full'},
  {path:'reset-pwd',component:ResetPWDComponent},

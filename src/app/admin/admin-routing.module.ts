@@ -14,7 +14,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 
 const routes: Routes = [{
   
-  path: 'portfollio',
+  path: 'portfolio',
   component: AdminComponent,
   canActivate: [authGuard],
   children: [
